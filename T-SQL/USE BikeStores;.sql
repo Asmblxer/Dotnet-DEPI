@@ -42,3 +42,19 @@ UPDATE production.products SET list_price = 119.99 WHERE product_id = 1;
 -- task 20
 UPDATE sales.customers SET email = 'new.email@example.com' WHERE customer_id = 2;
 -- task 21
+UPDATE sales.stores SET phone = '123-456-7890' WHERE store_id = 3;
+--task 22
+UPDATE production.categories SET category_name = 'Appliances' WHERE category_id = 2;
+-- task 23
+UPDATE sales.staffs SET active = 0 WHERE store_id = 1;
+
+-- task 24
+DELETE FROM production.brands WHERE brand_id = 2;
+-- task 25
+DELETE FROM production.categories WHERE category_id = 3;
+-- task 26
+DELETE FROM sales.customers WHERE customer_id = 4;
+-- task 27
+DELETE FROM sales.stores WHERE store_id = 5;
+-- task 28
+DELETE FROM sales.staffs WHERE staff_id = 6;
