@@ -58,3 +58,18 @@ DELETE FROM sales.customers WHERE customer_id = 4;
 DELETE FROM sales.stores WHERE store_id = 5;
 -- task 28
 DELETE FROM sales.staffs WHERE staff_id = 6;
+-- task 29
+SET IDENTITY_INSERT sales.orders ON;
+INSERT INTO sales.orders (order_id, order_date, customer_id, staff_id, store_id) VALUES (1, '2024-07-01', 1, 1, 1);
+SET IDENTITY_INSERT sales.orders OFF;
+-- task 30
+SET IDENTITY_INSERT sales.order_items ON;
+UPDATE sales.order_items SET shipped_date = '2024-07-05' WHERE order_id = 1;
+SET IDENTITY_INSERT sales.order_items OFF;
+-- task 31
+DELETE FROM sales.orders WHERE order_status = 3;
+-- task 32
+INSERT INTO production.products (product_name, list_price, brand_id, category_id) 
+VALUES ('ProductX', 100, 1, 1), ('ProductY', 200, 2, 2), ('ProductZ', 300, 3, 3);
+-- task 33
+UPDATE production.stocks SET quantity = 0 WHERE product_id = 1;
