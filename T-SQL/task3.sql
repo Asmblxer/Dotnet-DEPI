@@ -44,9 +44,9 @@ from production.products pp JOIN production.stocks ps ON pp.product_id = ps.prod
 GROUP BY pp.product_name;
 
 --task 9  ---
-SELECT CONCAT(c.first_name, ' ', c.last_name) as customer_name, COUNT( o.order_id) as total_orders
-FROM sales.customers c JOIN sales.orders o ON c.customer_id = o.customer_id;
-
+SELECT c.customer_id, CONCAT(c.first_name, ' ', c.last_name) as customer_name, COUNT( o.order_id) as total_orders
+FROM sales.customers c JOIN sales.orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id, CONCAT(c.first_name, ' ', c.last_name);
 
 --task 10  
 SELECT s.store_name, COUNT(DISTINCT oit.product_id) as total_products_sold
@@ -65,24 +65,22 @@ FROM production.products pp LEFT JOIN sales.order_items oit ON pp.product_id = o
 GROUP BY pp.product_name;
 
 --task 3 ---
-SELECT CONCAT(c.first_name, ' ', c.last_name) as customer_name, pp.product_name, pp.product_id
-FROM sales.customers c LEFT JOIN sales.orders o ON c.customer_id = o.customer_id
-LEFT JOIN sales.order_items oit ON o.order_id = oit.order_id
-LEFT JOIN production.products pp ON oit.product_id = pp.product_id;
-
+SELECT CONCAT(c.first_name, ' ', c.last_name) as customer_name, o.* 
+FROM sales.customers c RIGHT JOIN sales.orders o ON c.customer_id = o.customer_id;
 --task 4
 SELECT CONCAT(sm.first_name, ' ', sm.last_name) as staff_name, s.store_name
 FROM sales.staffs sm LEFT JOIN sales.stores s ON sm.store_id = s.store_id;
 
---task 5 ---
-
+--task 5 --
 
 --task 6 --
 
+
+SELECT c.customer_id, CONCAT(c.first_name, ' ', c.last_name) as customer_name, COUNT(o.order_id) as total_orders
+FROM sales.customers c LEFT JOIN sales.orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id, CONCAT(c.first_name, ' ', c.last_name);
 
 -- self join
 --task 1
 SELECT CONCAT(st.first_name, ' ', st.last_name) as staff_name, CONCAT(sm.first_name, ' ', sm.last_name) as manager_name
 FROM sales.staffs st LEFT JOIN sales.staffs sm ON st.manager_id = sm.staff_id;
-
-
